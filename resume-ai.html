@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>个人简历 - AI 应用工程师</title>
+<style>
+  :root{
+    --ink:#1b1f24;
+    --sub:#4a5361;
+    --line:#d8dee7;
+    --accent:#0f6b5f;
+    --bg:#ffffff;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{
+    background:#eef1f5;
+    font-family:"Microsoft YaHei","PingFang SC","Helvetica Neue",Arial,sans-serif;
+    color:var(--ink);
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+  .page{
+    width:210mm;
+    min-height:297mm;
+    margin:18px auto;
+    padding:16mm 17mm 14mm;
+    background:var(--bg);
+    box-shadow:0 6px 28px rgba(20,35,60,.14);
+  }
+  /* 头部 */
+  .head{
+    display:flex;justify-content:space-between;align-items:flex-end;
+    gap:24px;padding-bottom:12px;border-bottom:2px solid var(--ink);
+  }
+  .head h1{font-size:26px;letter-spacing:2px;font-weight:700;}
+  .head .role{
+    display:inline-block;margin-top:6px;font-size:12.5px;color:var(--accent);
+    border:1px solid var(--accent);border-radius:2px;padding:1px 8px;letter-spacing:1px;
+  }
+  .contact{font-size:12.5px;color:var(--sub);text-align:right;line-height:1.9;white-space:nowrap;}
+  .contact span{display:block;}
+  /* 区块 */
+  section{margin-top:16px;}
+  h2{
+    font-size:13px;letter-spacing:3px;color:var(--accent);font-weight:700;
+    padding-bottom:5px;border-bottom:1px solid var(--line);margin-bottom:9px;
+  }
+  h2::before{content:"";display:inline-block;width:3px;height:12px;background:var(--accent);margin-right:8px;vertical-align:-1px;}
+  /* 技能表 */
+  .skills{display:grid;grid-template-columns:78px 1fr;row-gap:7px;column-gap:10px;font-size:13px;}
+  .skills dt{color:var(--sub);font-weight:700;}
+  .skills dd{color:var(--ink);}
+  /* 核心优势 */
+  .edge{list-style:none;font-size:13px;}
+  .edge li{position:relative;padding-left:14px;margin-bottom:4px;text-align:justify;}
+  .edge li::before{content:"";position:absolute;left:2px;top:8px;width:4px;height:4px;background:var(--accent);border-radius:50%;}
+  /* 项目 */
+  .proj{margin-bottom:13px;}
+  .proj-head{display:flex;justify-content:space-between;align-items:baseline;gap:12px;}
+  .proj-head .name{font-size:14.5px;font-weight:700;}
+  .proj-head .name em{font-style:normal;font-size:12px;color:var(--sub);font-weight:400;margin-left:8px;}
+  .proj-head .meta{font-size:12px;color:var(--sub);white-space:nowrap;}
+  .proj-brief{font-size:12.8px;color:var(--sub);margin:3px 0 6px;}
+  .proj ul{list-style:none;font-size:13px;}
+  .proj ul li{
+    position:relative;padding-left:13px;margin-bottom:4px;text-align:justify;
+  }
+  .proj ul li::before{
+    content:"";position:absolute;left:2px;top:8px;width:4px;height:4px;
+    background:var(--accent);border-radius:50%;
+  }
+  .proj li b{font-weight:700;}
+  .stack{
+    margin-top:6px;font-size:12px;color:var(--sub);
+    border-left:2px solid var(--line);padding-left:9px;
+  }
+  /* 自我评价 */
+  .summary{font-size:13px;text-align:justify;}
+  /* 打印 */
+  @media print{
+    body{background:#fff;}
+    .page{margin:0;box-shadow:none;width:auto;min-height:auto;padding:14mm 15mm;}
+    section{break-inside:avoid;}
+    .proj{break-inside:avoid;}
+  }
+  @page{size:A4;margin:0;}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <header class="head">
+    <div>
+      <h1>［你的姓名］</h1>
+      <div class="role">AI 应用工程师</div>
+    </div>
+    <div class="contact">
+      <span>电话：［手机号］</span>
+      <span>邮箱：［邮箱］</span>
+      <span>GitHub：［github.com/用户名］</span>
+      <span>［学校 / 专业 / 学历 / 毕业时间］</span>
+    </div>
+  </header>
+
+  <section>
+    <h2>求职意向</h2>
+    <div class="skills" style="grid-template-columns:78px 1fr;">
+      <dt>目标岗位</dt><dd>AI 应用工程师（LLM 应用 / RAG 方向）</dd>
+      <dt>期望城市</dt><dd>［城市］　　到岗时间：［即时 / 毕业后］</dd>
+    </div>
+  </section>
+
+  <section>
+    <h2>核心优势</h2>
+    <ul class="edge">
+      <li>能独立完成 LLM 应用从文档解析、切片检索、Prompt 拼装到流式交互的全链路，不止停留在调接口 Demo。</li>
+      <li>习惯为模型的不确定性设计兜底：检索为空给出明确提示、未配置密钥自动降级、流式异常以事件返回而不白屏。</li>
+      <li>同时具备 Java Web 全栈交付能力，接口、权限隔离、数据库与 Tomcat 部署可一人闭环，降低跨角色沟通成本。</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>专业技能</h2>
+    <dl class="skills">
+      <dt>AI 应用</dt>
+      <dd>OpenAI 兼容接口接入（DeepSeek / 通义等可切换）、SSE 流式输出与增量渲染、RAG 检索增强流程、Prompt 设计与上下文拼装、引用溯源、中文 bigram 分词、BM25 相关度排序、PDF 文本提取、无密钥降级策略</dd>
+
+      <dt>后　端</dt>
+      <dd>Java 11、Servlet 4.0、JSP / JSTL、MVC 分层架构、原生 JDBC、MySQL 8、Session 会话与 Filter 鉴权、按用户的数据隔离、multipart 文件上传、参数校验与异常处理</dd>
+
+      <dt>前　端</dt>
+      <dd>HTML5、CSS3、原生 JavaScript、fetch 读取流式响应、SSE 事件解析与逐 token 追加、聊天界面与引用卡片渲染、上传交互（点击 / 拖拽）、JSP 模板与公共组件</dd>
+
+      <dt>工　程</dt>
+      <dd>Maven（WAR 打包）、Tomcat 9 部署与日志排查、JUnit 5 单元测试、H2 内存库测试、配置与密钥的环境变量管理、Git 版本管理、第三方接口联调与端到端自检</dd>
+    </dl>
+  </section>
+
+  <section>
+    <h2>项目经历</h2>
+
+    <div class="proj">
+      <div class="proj-head">
+        <div class="name">AI 知识库问答系统<em>个人项目 · 独立完成全栈与模型接入</em></div>
+        <div class="meta">［2025.04 – 2025.06］</div>
+      </div>
+      <p class="proj-brief">
+        面向个人文档的检索增强问答应用：上传 txt / md / pdf 后自动切片入库，提问时先检索最相关片段，再交给大模型生成带引用的回答，全程流式呈现。已作为独立模块集成进 Java Web 项目并部署验证。
+      </p>
+      <ul>
+        <li><b>RAG 检索链路：</b>PDFBox 解析 PDF、按 UTF-8 读取 txt / md，统一做空白归一化；按 500 字窗口 + 100 字重叠切片并优先在段落 / 句号边界断开；查询侧用中文 bigram 分词 + BM25（k1=1.5、b=0.75）排序取 Top-4 片段，拼入提示词并编号，回答末尾展示引用文档、段号与相关度。</li>
+        <li><b>模型接入与流式输出：</b>基于 JDK HttpClient 调用 OpenAI 兼容的 <b>/chat/completions</b>（stream=true），逐行解析 SSE 增量并转发给前端；自实现 JSON 转义与 delta 内容解析，兼容空 delta、null content 与 [DONE] 结束标记；异常统一以 <b>event: error</b> 返回，聊天页不中断。</li>
+        <li><b>可用性与降级：</b>模型地址、模型名与密钥全部外置到配置文件，并支持环境变量 <b>AI_API_KEY</b> 覆盖，避免密钥入库；未配置密钥时自动进入检索演示模式，直接回显相关片段并提示配置方式，保证无 Key 也能走通上传 → 检索 → 展示全流程。</li>
+        <li><b>数据与权限：</b>设计 kb_document / kb_chunk 两张表，文档与切片分级存储；上传、列表、删除、问答四类接口均按登录用户隔离，参赛者只能操作本人文档，管理员可查看全部；上传限制 5MB，服务端二次校验文件类型与大小。</li>
+        <li><b>前端交互：</b>实现文档库卡片列表与聊天页，支持拖拽 / 点击上传、检索范围切换（全部文档或指定文档）；用 fetch 读取 SSE 流，按事件类型分别渲染 token、引用卡片与错误提示，自动滚动并禁用重复提交。</li>
+        <li><b>测试与交付：</b>为切片边界、BM25 排序、SSE 解析、H2 文档导入编写 4 组 JUnit 5 测试；Maven 打包 WAR 部署至 Tomcat 9，通过真实 HTTP 完成登录 → 上传 → 列表 → 问答 → 引用的端到端验证，并验证无密钥降级路径。</li>
+      </ul>
+      <div class="stack">技术栈：Java 11 · Servlet / JSP · JDBC / MySQL · PDFBox · BM25 · OpenAI 兼容接口 · SSE · JUnit 5 · H2 · Maven · Tomcat 9</div>
+    </div>
+
+    <div class="proj">
+      <div class="proj-head">
+        <div class="name">校园马拉松报名系统<em>个人独立开发 · 全栈</em></div>
+        <div class="meta">［2025.03 – 2025.06］</div>
+      </div>
+      <p class="proj-brief">
+        面向校内马拉松赛事的在线报名与后台管理系统。独立完成数据库设计、MVC 分层实现、支付闭环与部署上线，也是 AI 知识库模块的宿主项目。
+      </p>
+      <ul>
+        <li><b>全栈分层：</b>按 model / dao + dao.impl / service / web(Servlet) / util 五层落地 MVC，按职责拆分 10 余个 Servlet 控制器，JSP 仅作视图，抽取公共头尾与统一错误页。</li>
+        <li><b>并发与名额控制：</b>采用「JVM 互斥锁 + 数据库带容量条件的原子 UPDATE」双重防线防止超卖，用 JUnit 5 + H2 编写并发测试复现临界名额场景验证逻辑。</li>
+        <li><b>支付闭环：</b>接入支付宝沙箱，完成下单 → 异步 notify → RSA 验签 → 金额与订单号校验 → 幂等落库 → 状态确认；取消报名自动退款，驳回已支付记录先退款再置状态，避免资金与状态不一致。</li>
+        <li><b>权限与可观测：</b>Filter 统一拦截未登录请求，管理员 / 参赛者双角色分流，参赛者仅能操作本人记录；关键支付节点写订单号审计日志，便于对账与排障。</li>
+      </ul>
+      <div class="stack">技术栈：Java 11 · Servlet 4.0 · JSP / JSTL · MySQL 8 · JDBC · 支付宝沙箱 SDK · JUnit 5 · H2 · Maven · Tomcat 9</div>
+    </div>
+
+    <div class="proj">
+      <div class="proj-head">
+        <div class="name">校园竞赛评分与排名系统<em>个人项目 · 多角色权限 + 复杂业务规则</em></div>
+        <div class="meta">［2025.07 – 2025.08］</div>
+      </div>
+      <p class="proj-brief">
+        面向校内创新创业竞赛的评审打分与排名管理系统：管理员维护竞赛、参赛者、评审账号与评分维度，评审登录后对参赛者多维度打分，系统自动计算加权总分并按同分并列规则生成排名。
+      </p>
+      <ul>
+        <li><b>多维度评分与权重校验：</b>管理员为每场竞赛配置评分维度（如技术难度 / 创新性 / 完成度，权重 0–100），保存时校验权重和必须等于 100；竞赛进入评审阶段后锁定维度，防止评分过程中再改权重导致分数失效。</li>
+        <li><b>防重复覆盖的评分提交：</b>设计 ScoreDAO.submit 接口，以 (judge_id, contestant_id, criterion_id) 为唯一键做覆盖更新——MySQL 用 INSERT ... ON DUPLICATE KEY UPDATE，H2 / 其他 DB 自动回退为先查后删再插；评审改分只需重新提交，不会产生重复记录。</li>
+        <li><b>实时排名与同分并列：</b>computeContestRank 遍历所有参赛者，按 criterion.weight / 100 加权求总分（BigDecimal 避免浮点误差），降序排序后采用跳过式排名（1,1,3 模式）：同分者共享名次，下一名次按实际人数跳过，符合竞赛颁奖惯例。</li>
+        <li><b>双角色权限隔离：</b>管理员可维护全部竞赛、参赛者、评审与维度；评审登录后只看到自己负责的竞赛和待打分参赛者，只能提交 / 修改自己的评分，不能改他人评分或管理数据；用 SessionUser 加 JUDGE 角色 + contestId 绑定实现评审范围控制。</li>
+        <li><b>密码安全与单元测试：</b>评审账号密码用手动加盐 SHA-256（无 BCrypt 依赖）存储，登录时校验盐 + 哈希；为权重计算、同分并列、状态流转、防重复覆盖编写 14 个 JUnit 5 测试用例，用内存假 DAO 模拟，不依赖真实数据库。</li>
+      </ul>
+      <div class="stack">技术栈：Java 11 · Servlet / JSP · JDBC / MySQL · SHA-256 + 盐 · JUnit 5 · H2 · Maven · Tomcat 9</div>
+    </div>
+
+    <div class="proj">
+      <div class="proj-head">
+        <div class="name">报名业务实时数据看板<em>个人项目 · SQL 聚合 + 交互式可视化</em></div>
+        <div class="meta">［2025.08 – 2025.09］</div>
+      </div>
+      <p class="proj-brief">
+        基于报名业务库的实时数据分析看板：后端用 GROUP BY 聚合 SQL 在数据库侧完成统计并输出 JSON 接口，前端动态拉取渲染 Chart.js 图表，报名、审核、支付变化 30 秒内自动反映到看板；另附纯 Python 标准库的合成数据生成与灌库工具链。
+      </p>
+      <ul>
+        <li><b>聚合 SQL 与分析 DAO：</b>专用 AnalyticsDAO 用 5 条 GROUP BY 聚合查询（状态分布、支付漏斗 + 金额小计、项目容量、学院×项目交叉矩阵、每日趋势）在数据库侧完成统计，避免把全量明细拉回内存；同一连接复用执行，交叉矩阵在 Java 侧按学院合计降序装配成有序结构。</li>
+        <li><b>受控 JSON 接口：</b>AnalyticsDataServlet 手工拼装 JSON（字段白名单 + 字符串转义，学院名来自用户输入需防注入），零序列化依赖；响应带 Cache-Control: no-store 保证轮询不读缓存；鉴权由 Filter 统一拦截，仅管理员可访问全量统计数据。</li>
+        <li><b>动态可视化前端：</b>/analytics 页面 fetch 接口渲染 4 张 KPI 卡片与 6 类 Chart.js 图表（项目占比 / 容量使用 / 状态分布 / 支付漏斗 / 每日趋势 / 学院 TOP8）及学院×项目热力矩阵；重渲染前销毁旧图表实例防内存泄漏，30 秒自动轮询 + 手动刷新按钮，空数据与接口异常均有提示兜底。</li>
+        <li><b>数据工具链：</b>纯 Python 标准库实现合成报名数据生成器（按学院权重、项目容量上限、报名时段分布建模，439 条可复现数据，无 pandas / matplotlib 依赖），并编写 CSV → INSERT 灌库脚本，一键为真实业务库准备演示数据集。</li>
+      </ul>
+      <div class="stack">技术栈：Java 11 · Servlet / JDBC · MySQL 聚合查询 · JSON 接口 · Chart.js 4 · fetch 轮询 · Python 标准库 · CSV · Tomcat 9</div>
+    </div>
+
+    <div class="proj">
+      <div class="proj-head">
+        <div class="name">站点智能客服组件<em>个人项目 · 对话式交互</em></div>
+        <div class="meta">［2025.06］</div>
+      </div>
+      <p class="proj-brief">
+        集成在报名系统右下角的客服浮窗，用预设 FAQ 覆盖报名、缴费、退款、参赛项目等高频问题，降低重复咨询。
+      </p>
+      <ul>
+        <li>按关键词归一化匹配 6 组常见问题及标准答案，提供快捷提问 chips；未命中时统一兜底提示，避免给出错误承诺。</li>
+        <li>「转人工」作为独立意图处理，展示人工联系方式与一键复制，并把无法回答的问题明确引导至人工，形成完整的会话闭环。</li>
+      </ul>
+      <div class="stack">技术栈：原生 JavaScript · 关键词匹配 · 会话 UI · 兜底与转人工设计</div>
+    </div>
+  </section>
+
+  <section>
+    <h2>自我评价</h2>
+    <p class="summary">
+      做 AI 应用时更关注「模型不可靠的部分怎么兜住」：先检索再生成、回答可引用核对、检索为空与接口异常都有明确出口，而不是把不确定性直接甩给用户。习惯从页面、接口、数据到部署端到端把功能做完，并通过单元测试与真实 HTTP 调用验证链路；能独立读官方文档完成第三方能力接入，交付时附带可复现的启动与验证步骤。
+    </p>
+  </section>
+
+</div>
+</body>
+</html>

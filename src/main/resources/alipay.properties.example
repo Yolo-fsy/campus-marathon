@@ -1,0 +1,12 @@
+# 支付宝沙箱配置：复制本文件为 alipay.properties 后填入自己的沙箱应用信息
+# 注意：private_key 为应用私钥，属于敏感信息，切勿提交到公开仓库。
+alipay.mock=false
+alipay.app_id=你的沙箱应用 APPID
+alipay.private_key=你的应用私钥
+alipay.alipay_public_key=支付宝公钥
+alipay.gateway=https://openapi-sandbox.dl.alipaydev.com/gateway.do
+# 异步通知与同步跳转地址需公网可访问，本地联调可改用内网穿透地址
+alipay.notify_url=http://你的域名/campus-marathon/pay/notify
+alipay.return_url=http://你的域名/campus-marathon/pay/return
+alipay.amount=30.00
+alipay.subject=校园马拉松报名费

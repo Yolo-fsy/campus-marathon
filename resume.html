@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>个人简历 - 全栈开发工程师</title>
+<style>
+  :root{
+    --ink:#1b1f24;
+    --sub:#4a5361;
+    --line:#d8dee7;
+    --accent:#1f4f8b;
+    --bg:#ffffff;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{
+    background:#eef1f5;
+    font-family:"Microsoft YaHei","PingFang SC","Helvetica Neue",Arial,sans-serif;
+    color:var(--ink);
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+  .page{
+    width:210mm;
+    min-height:297mm;
+    margin:18px auto;
+    padding:16mm 17mm 14mm;
+    background:var(--bg);
+    box-shadow:0 6px 28px rgba(20,35,60,.14);
+  }
+  /* 头部 */
+  .head{
+    display:flex;justify-content:space-between;align-items:flex-end;
+    gap:24px;padding-bottom:12px;border-bottom:2px solid var(--ink);
+  }
+  .head h1{font-size:26px;letter-spacing:2px;font-weight:700;}
+  .head .role{
+    display:inline-block;margin-top:6px;font-size:12.5px;color:var(--accent);
+    border:1px solid var(--accent);border-radius:2px;padding:1px 8px;letter-spacing:1px;
+  }
+  .contact{font-size:12px;color:var(--sub);text-align:right;line-height:1.85;max-width:56%;}
+  .contact span{display:block;overflow-wrap:anywhere;}
+  /* 区块 */
+  section{margin-top:16px;}
+  h2{
+    font-size:13px;letter-spacing:3px;color:var(--accent);font-weight:700;
+    padding-bottom:5px;border-bottom:1px solid var(--line);margin-bottom:9px;
+  }
+  h2::before{content:"";display:inline-block;width:3px;height:12px;background:var(--accent);margin-right:8px;vertical-align:-1px;}
+  /* 技能表 */
+  .skills{display:grid;grid-template-columns:78px 1fr;row-gap:7px;column-gap:10px;font-size:13px;}
+  .skills dt{color:var(--sub);font-weight:700;}
+  .skills dd{color:var(--ink);}
+  /* 项目 */
+  .proj{margin-bottom:13px;}
+  .proj-head{display:flex;justify-content:space-between;align-items:baseline;gap:12px;}
+  .proj-head .name{font-size:14.5px;font-weight:700;}
+  .proj-head .name em{font-style:normal;font-size:12px;color:var(--sub);font-weight:400;margin-left:8px;}
+  .proj-head .meta{font-size:12px;color:var(--sub);white-space:nowrap;}
+  .proj-brief{font-size:12.8px;color:var(--sub);margin:3px 0 6px;}
+  .proj ul{list-style:none;font-size:13px;}
+  .proj ul li{
+    position:relative;padding-left:13px;margin-bottom:4px;text-align:justify;
+  }
+  .proj ul li::before{
+    content:"";position:absolute;left:2px;top:8px;width:4px;height:4px;
+    background:var(--accent);border-radius:50%;
+  }
+  .proj li b{font-weight:700;}
+  .stack{
+    margin-top:6px;font-size:12px;color:var(--sub);
+    border-left:2px solid var(--line);padding-left:9px;
+  }
+  /* 自我评价 */
+  .summary{font-size:13px;text-align:justify;}
+  /* 链接 */
+  a{color:var(--accent);text-decoration:none;}
+  a:hover{text-decoration:underline;}
+  /* 在线作品 */
+  .works{font-size:12.8px;display:grid;grid-template-columns:72px 1fr;row-gap:5px;column-gap:10px;}
+  .works dt{color:var(--sub);font-weight:700;}
+  .works dd{word-break:break-all;}
+  .works .acct{color:var(--sub);font-size:12px;}
+  /* 项目在线入口 */
+  .proj-links{font-size:12px;color:var(--sub);margin-top:5px;}
+  .proj-links a{margin-right:16px;}
+  .proj-links span{margin-right:16px;}
+  /* 快速启动 */
+  .quick{font-size:12.5px;color:var(--sub);line-height:1.85;}
+  .quick b{color:var(--ink);font-weight:700;}
+  .quick code{
+    font-family:Consolas,"Courier New",monospace;background:#f4f6f9;
+    border:1px solid var(--line);border-radius:3px;padding:0 5px;
+    color:var(--ink);font-size:12px;
+  }
+  /* 打印 */
+  @media print{
+    body{background:#fff;}
+    .page{margin:0;box-shadow:none;width:auto;min-height:auto;padding:14mm 15mm;}
+    section{break-inside:avoid;}
+    .proj{break-inside:avoid;}
+  }
+  @page{size:A4;margin:0;}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <header class="head">
+    <div>
+      <h1>［你的姓名］</h1>
+      <div class="role">全栈开发工程师</div>
+    </div>
+    <div class="contact">
+      <span>电话：［手机号］　邮箱：［邮箱］</span>
+      <span>在线演示：<a href="http://101.42.186.195/campus-marathon/login">101.42.186.195/campus-marathon</a></span>
+      <span>源码仓库：<a href="https://github.com/［用户名］/campus-marathon">github.com/［用户名］/campus-marathon</a></span>
+      <span>［学校 / 专业 / 学历 / 毕业时间］</span>
+    </div>
+  </header>
+
+  <section>
+    <h2>求职意向</h2>
+    <div class="skills" style="grid-template-columns:78px 1fr;">
+      <dt>目标岗位</dt><dd>全栈开发工程师（Java / Web 全栈方向）</dd>
+      <dt>期望城市</dt><dd>［城市］　　到岗时间：［即时 / 毕业后］</dd>
+    </div>
+  </section>
+
+  <section>
+    <h2>专业技能</h2>
+    <dl class="skills">
+      <dt>后　端</dt>
+      <dd>Java 11、Servlet 4.0、JSP / JSTL、MVC 分层架构、原生 JDBC、Session 会话管理、Filter 登录鉴权与角色权限控制、接口参数校验与异常处理</dd>
+
+      <dt>前　端</dt>
+      <dd>HTML5、CSS3、原生 JavaScript、JSP 模板与公共组件（header / footer）、表单前端校验与服务端二次校验、交互式选品页与状态提示、响应式布局</dd>
+
+      <dt>数据库</dt>
+      <dd>MySQL 8 表结构设计与外键约束、多表关联查询、事务控制、索引基础、原子 UPDATE 实现并发安全的库存扣减、H2 内存库用于单元测试与压测</dd>
+
+      <dt>工　程</dt>
+      <dd>Maven（WAR 打包）、Tomcat 9 部署与日志排查、JUnit 5 单元测试、并发压测、Git 版本管理、支付宝沙箱联调、审计日志落盘与对账</dd>
+    </dl>
+  </section>
+
+  <section>
+    <h2>在线作品</h2>
+    <dl class="works">
+      <dt>演示地址</dt>
+      <dd><a href="http://101.42.186.195/campus-marathon/login">http://101.42.186.195/campus-marathon/login</a>
+        <span class="acct">（体验账号 admin / admin123，内置 507 条仿真报名数据）</span></dd>
+      <dt>源码仓库</dt>
+      <dd><a href="https://github.com/［用户名］/campus-marathon">github.com/［用户名］/campus-marathon</a>
+        <span class="acct">（含建库脚本、部署脚本与启动说明）</span></dd>
+      <dt>可操作模块</dt>
+      <dd>在线报名 · 审核流转 · 支付宝沙箱支付 · 实时数据看板 · AI 知识库问答，五个模块均可实际点击操作，不是静态截图。</dd>
+    </dl>
+  </section>
+
+  <section>
+    <h2>项目经历</h2>
+
+    <div class="proj">
+      <div class="proj-head">
+        <div class="name">校园马拉松报名系统<em>个人独立开发 · 全栈</em></div>
+        <div class="meta">［2025.03 – 2025.06］</div>
+      </div>
+      <p class="proj-brief">
+        面向校内马拉松赛事的在线报名与后台管理系统。独立完成数据库设计、DAO / Service / Servlet / JSP 四层实现、支付闭环与部署上线；针对开放报名时的集中抢名额场景，通过并发压测验证名额控制逻辑，确保临界容量下不出现超卖。
+      </p>
+      <ul>
+        <li><b>架构与权限：</b>按 model / dao + dao.impl / service / web(Servlet) / util 五层落地 MVC，拆分 12 个 Servlet 控制器，JSP 仅作纯视图；Filter 统一拦截未登录请求并做双角色分流，参赛者只能操作本人记录，越权访问直接拒绝。</li>
+        <li><b>并发与名额控制：</b>「JVM 互斥锁 + 数据库带容量条件的原子 UPDATE」双重防线防止超卖：Service 层 CapacityGuard 串行化确认动作，DAO 层 tryConfirmWithCapacity 以原子更新作最终裁决，并发同时到达也只有一次成功；用 JUnit 5 + H2 复现临界名额场景验证。</li>
+        <li><b>支付闭环：</b>接入支付宝沙箱，完成「下单 → 异步 notify → RSA 验签 → 金额与订单号校验 → 幂等落库 → 状态确认」全链路；取消报名自动退款，驳回已支付记录先退款再置状态，避免资金与状态不一致。</li>
+        <li><b>校验与可观测：</b>学号、手机号、重复报名采用前端即时提示 + 服务端强制复核双保险，状态按「待审核 → 成功 / 驳回」流转；下单、回调、退款等关键节点写订单号审计日志，便于对账排障。</li>
+      </ul>
+      <div class="stack">技术栈：Java 11 · Servlet 4.0 · JSP / JSTL · MySQL 8 · JDBC · 支付宝沙箱 SDK · JUnit 5 · H2 · Maven · Tomcat 9</div>
+      <div class="proj-links">
+        <a href="http://101.42.186.195/campus-marathon/login">▶ 在线体验</a>
+        <a href="https://github.com/［用户名］/campus-marathon">源码</a>
+        <span>账号 admin / admin123</span>
+      </div>
+    </div>
+
+    <div class="proj">
+      <div class="proj-head">
+        <div class="name">AI 知识库问答应用<em>个人项目 · Java Web 全栈 + 模型接入</em></div>
+        <div class="meta">［2025.04 – 2025.06］</div>
+      </div>
+      <p class="proj-brief">
+        面向个人文档的检索增强问答工具：上传文档后自动切片入库，提问时先检索相关片段再交给大模型生成回答，回答以流式方式逐步呈现。
+      </p>
+      <ul>
+        <li>前端实现文档上传与聊天界面，基于 fetch 读取 SSE 流并逐 token 追加渲染，处理加载态、引用展示与服务端错误提示。</li>
+        <li>后端用 PDFBox 解析 PDF、按 500 字窗口 + 100 字重叠切片，中文 bigram 分词后以 BM25 取 Top-4 片段拼入提示词，降低模型幻觉。</li>
+        <li>文档按登录用户隔离、管理员可见全部；模型密钥走环境变量，未配置时自动降级为检索演示模式，异常以 SSE error 事件返回而不中断页面。</li>
+      </ul>
+      <div class="stack">技术栈：Java 11 · Servlet / JSP · JDBC / MySQL · PDFBox · BM25 检索 · 大模型 API · SSE 流式输出</div>
+      <div class="proj-links">
+        <a href="http://101.42.186.195/campus-marathon/ai">▶ 在线体验</a>
+        <a href="https://github.com/［用户名］/campus-marathon">源码</a>
+        <span>登录后点顶部「AI 知识库」</span>
+      </div>
+    </div>
+
+    <div class="proj">
+      <div class="proj-head">
+        <div class="name">报名业务实时数据看板<em>个人项目 · 聚合 SQL + 动态可视化</em></div>
+        <div class="meta">［2025.08 – 2025.09］</div>
+      </div>
+      <p class="proj-brief">
+        在报名业务库之上搭建的实时分析看板：后端在数据库侧完成聚合统计并以 JSON 接口输出，前端 30 秒轮询渲染图表，报名、审核、支付的变化自动反映。
+      </p>
+      <ul>
+        <li><b>聚合查询与接口：</b>用 5 条 GROUP BY 查询完成状态分布、支付漏斗与金额小计、项目容量、学院 × 项目交叉矩阵与每日趋势，避免全量明细回内存；手写受控 JSON（字段白名单 + 转义），零序列化依赖，响应禁用缓存保证轮询实时。</li>
+        <li><b>前端与数据工具：</b>Chart.js 渲染 4 张 KPI 与 6 类图表及热力矩阵，重渲染前销毁旧实例防内存泄漏，空数据与接口异常均有兜底；另用 Python 标准库编写可复现的合成数据生成与 CSV 灌库脚本。</li>
+      </ul>
+      <div class="stack">技术栈：Java 11 · Servlet / JDBC · MySQL 聚合查询 · JSON 接口 · Chart.js 4 · Python 标准库</div>
+      <div class="proj-links">
+        <a href="http://101.42.186.195/campus-marathon/analytics">▶ 在线看板</a>
+        <a href="https://github.com/［用户名］/campus-marathon">源码</a>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>自我评价</h2>
+    <p class="summary">
+      习惯从「页面 → 接口 → 数据库 → 部署」端到端把一件事做完，排查问题优先看日志与数据而不是猜；对并发一致性、越权访问、支付对账这类易错环节会主动设计防线并写测试验证，交付时附带可复现的启动与验证步骤。
+    </p>
+  </section>
+
+  <section>
+    <h2>本地启动</h2>
+    <p class="quick">
+      <b>环境：</b>JDK 17 · Maven 3.8+ · MySQL 8 · Tomcat 9　｜　
+      <b>三步运行：</b><br>
+      ① 建表并灌入演示数据：依次执行 <code>sql/marathon.sql</code>、<code>data/marathon_import.sql</code><br>
+      ② 在 <code>src/main/resources/db.properties</code> 填入本地数据库账号密码<br>
+      ③ <code>mvn clean package</code>，将 <code>target/campus-marathon.war</code> 放入 Tomcat <code>webapps</code> 后启动，访问 <code>/campus-marathon/login</code><br>
+      Windows 下可直接运行 <code>start-all.ps1</code> 一键拉起 MySQL 与 Tomcat。
+    </p>
+  </section>
+
+</div>
+</body>
+</html>

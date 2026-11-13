@@ -1,0 +1,250 @@
+/* 报名数据分析看板（/analytics）——ax- 前缀避免与全局样式冲突 */
+
+.ax-page {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 28px 20px 60px;
+}
+
+/* 顶部横幅 */
+.ax-hero {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 26px 30px;
+    background: linear-gradient(135deg, #ff5a1f, #ef4f13);
+    border-radius: 14px;
+    color: #fff;
+    margin-bottom: 20px;
+}
+
+.ax-hero h1 {
+    font-size: 24px;
+    letter-spacing: 1px;
+    margin: 4px 0 8px;
+}
+
+.ax-hero h1 em {
+    font-style: normal;
+    opacity: 0.92;
+}
+
+.ax-hero p {
+    font-size: 13px;
+    opacity: 0.88;
+    max-width: 620px;
+    line-height: 1.7;
+}
+
+.ax-eyebrow {
+    font-size: 11px;
+    letter-spacing: 3px;
+    opacity: 0.85;
+}
+
+.ax-hero-side {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 10px;
+    flex-shrink: 0;
+}
+
+.ax-meta {
+    font-size: 12px;
+    opacity: 0.85;
+    max-width: 200px;
+    text-align: right;
+}
+
+.ax-hero .btn-primary {
+    background: #fff;
+    color: #ef4f13;
+    border: none;
+}
+
+/* KPI 卡片 */
+.ax-kpis {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 14px;
+    margin-bottom: 20px;
+}
+
+.ax-kpi {
+    background: #fff;
+    border-radius: 12px;
+    padding: 18px 20px;
+    box-shadow: 0 2px 10px rgba(20, 35, 60, .08);
+}
+
+.ax-num {
+    font-size: 28px;
+    font-weight: 700;
+    color: #ff5a1f;
+}
+
+.ax-num--blue {
+    color: #1f4f8b;
+}
+
+.ax-label {
+    font-size: 12.5px;
+    color: #6b7280;
+    margin-top: 4px;
+    letter-spacing: 0.5px;
+}
+
+/* 图表卡片 */
+.ax-card {
+    background: #fff;
+    border-radius: 12px;
+    padding: 22px 24px;
+    margin-bottom: 18px;
+    box-shadow: 0 2px 10px rgba(20, 35, 60, .08);
+}
+
+.ax-card h2 {
+    font-size: 15px;
+    letter-spacing: 2px;
+    color: #1f4f8b;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #e5e7eb;
+    margin-bottom: 18px;
+}
+
+.ax-card h2::before {
+    content: "";
+    display: inline-block;
+    width: 3px;
+    height: 12px;
+    background: #ff5a1f;
+    margin-right: 8px;
+    vertical-align: -1px;
+}
+
+.ax-grid2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+}
+
+.ax-chart {
+    position: relative;
+    height: 280px;
+}
+
+.ax-chart--tall {
+    height: 320px;
+}
+
+/* 空数据提示 */
+.ax-empty {
+    background: #fff7ed;
+    border: 1px solid #fed7aa;
+    color: #9a3412;
+    border-radius: 10px;
+    padding: 14px 18px;
+    margin-bottom: 18px;
+    font-size: 13.5px;
+}
+
+/* 热力矩阵 */
+.ax-heat {
+    overflow-x: auto;
+}
+
+.ax-heat table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+}
+
+.ax-heat th,
+.ax-heat td {
+    padding: 8px 12px;
+    text-align: left;
+    border-bottom: 1px solid #f1f3f6;
+}
+
+.ax-heat th {
+    background: #f9fafb;
+    color: #4b5563;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.ax-heat tr:hover td {
+    background: #f9fafb;
+}
+
+.ax-heat-total {
+    font-weight: 700;
+}
+
+.ax-heat-cell {
+    display: inline-block;
+    min-width: 34px;
+    font-weight: 600;
+    color: #fff;
+    text-align: center;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 12.5px;
+}
+
+/* 财务汇总 */
+.ax-revenue {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+}
+
+.ax-revenue td {
+    padding: 10px 12px;
+    border-bottom: 1px solid #f1f3f6;
+}
+
+.ax-revenue td:last-child {
+    text-align: right;
+    font-weight: 700;
+}
+
+.ax-revenue-net td {
+    border-top: 2px solid #e5e7eb;
+    font-size: 15px;
+    font-weight: 800;
+    color: #1f4f8b;
+}
+
+.ax-revenue-count {
+    font-size: 12px;
+    color: #6b7280;
+    font-weight: 400;
+    margin-right: 10px;
+}
+
+@media (max-width: 760px) {
+    .ax-hero {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .ax-hero-side {
+        flex-direction: row;
+        align-items: center;
+    }
+
+    .ax-meta {
+        text-align: left;
+    }
+
+    .ax-kpis {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .ax-grid2 {
+        grid-template-columns: 1fr;
+    }
+}

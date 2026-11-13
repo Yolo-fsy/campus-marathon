@@ -1,0 +1,29 @@
+# ---------- 构建产物 ----------
+target/
+*.war
+*.class
+
+# ---------- IDE / 编辑器 ----------
+.idea/
+*.iml
+.vscode/
+.settings/
+.classpath
+.project
+
+# ---------- 本地运行数据 ----------
+mysqldata/
+logs/
+*.log
+
+# ---------- 敏感配置（数据库口令、模型密钥、支付私钥、管理员密码）----------
+# 仓库中只保留 *.example 模板，真实配置请本地创建
+src/main/resources/db.properties
+src/main/resources/ai.properties
+src/main/resources/alipay.properties
+src/main/resources/auth.properties
+
+# ---------- 工具缓存 ----------
+.trae/
+__pycache__/
+*.pyc

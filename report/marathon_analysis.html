@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>校园马拉松报名数据可视化报告</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #f4f6fa; font-family: -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif; color: #1b1f24; line-height: 1.6; }
+  .container { max-width: 1100px; margin: 0 auto; padding: 32px 20px 60px; }
+  header { padding: 28px 32px; background: linear-gradient(135deg, #ff5a1f, #ef4f13); border-radius: 14px; color: #fff; margin-bottom: 24px; }
+  header h1 { font-size: 24px; letter-spacing: 1px; }
+  header p { margin-top: 6px; opacity: 0.85; font-size: 13px; }
+  .kpi-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-bottom: 24px; }
+  .kpi { background: #fff; border-radius: 12px; padding: 18px 20px; box-shadow: 0 2px 10px rgba(20,35,60,.08); }
+  .kpi .num { font-size: 28px; font-weight: 700; color: #ff5a1f; }
+  .kpi .label { font-size: 12.5px; color: #6b7280; margin-top: 4px; letter-spacing: 0.5px; }
+  .kpi .num.secondary { color: #1f4f8b; }
+  .section { background: #fff; border-radius: 12px; padding: 22px 24px; margin-bottom: 18px; box-shadow: 0 2px 10px rgba(20,35,60,.08); }
+  .section h2 { font-size: 15px; letter-spacing: 2px; color: #1f4f8b; padding-bottom: 10px; border-bottom: 1px solid #e5e7eb; margin-bottom: 18px; }
+  .section h2::before { content: ""; display: inline-block; width: 3px; height: 12px; background: #ff5a1f; margin-right: 8px; vertical-align: -1px; }
+  .chart-row { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+  .chart-row.full { grid-template-columns: 1fr; }
+  .chart-box { position: relative; height: 280px; }
+  @media (max-width: 760px) {
+    .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+    .chart-row { grid-template-columns: 1fr; }
+  }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  th, td { padding: 8px 12px; text-align: left; border-bottom: 1px solid #f1f3f6; }
+  th { background: #f9fafb; color: #4b5563; font-weight: 600; }
+  tr:hover { background: #f9fafb; }
+  .heat-cell { font-weight: 600; color: #fff; text-align: center; padding: 6px 8px; border-radius: 4px; font-size: 12.5px; }
+</style>
+</head>
+<body>
+<div class="container">
+
+<header>
+  <h1>🏃‍♂️ 校园马拉松 · 报名数据可视化报告</h1>
+  <p>基于 2025 年 8–9 月赛事报名数据 · 共 439 条记录 · 生成时间 2025-09-09 10:00</p>
+</header>
+
+<section class="kpi-grid">
+  <div class="kpi"><div class="num">439</div><div class="label">总报名人数</div></div>
+  <div class="kpi"><div class="num secondary">288</div><div class="label">报名成功（CONFIRMED）</div></div>
+  <div class="kpi"><div class="num">65.6%</div><div class="label">确认率（审核通过）</div></div>
+  <div class="kpi"><div class="num">67.4%</div><div class="label">支付转化率（成功/已确认）</div></div>
+</section>
+
+<section class="section">
+  <h2>参赛项目分布</h2>
+  <div class="chart-row">
+    <div class="chart-box"><canvas id="eventPie"></canvas></div>
+    <div class="chart-box"><canvas id="eventBar"></canvas></div>
+  </div>
+</section>
+
+<section class="section">
+  <h2>报名状态与支付漏斗</h2>
+  <div class="chart-row">
+    <div class="chart-box"><canvas id="statusDoughnut"></canvas></div>
+    <div class="chart-box"><canvas id="payFunnel"></canvas></div>
+  </div>
+</section>
+
+<section class="section">
+  <h2>每日报名趋势</h2>
+  <div class="chart-row full">
+    <div class="chart-box" style="height:300px"><canvas id="dailyLine"></canvas></div>
+  </div>
+</section>
+
+<section class="section">
+  <h2>学院报名 TOP8</h2>
+  <div class="chart-row full">
+    <div class="chart-box" style="height:320px"><canvas id="collegeBar"></canvas></div>
+  </div>
+</section>
+
+<section class="section">
+  <h2>学院 × 项目交叉矩阵</h2>
+  <table>
+    <thead><tr><th>学院</th><th>合计</th><th>半程马拉松</th><th>迷你跑</th><th>欢乐跑</th></tr></thead>
+    <tbody>
+      <tr><td>计算机科学与技术学院</td><td style="font-weight:700">57</td><td><span class=heat-cell style=background:rgb(113,52,30)>11</span></td><td><span class=heat-cell style=background:rgb(116,54,30)>19</span></td><td><span class=heat-cell style=background:rgb(119,56,30)>27</span></td></tr><tr><td>机械工程学院</td><td style="font-weight:700">55</td><td><span class=heat-cell style=background:rgb(113,52,30)>11</span></td><td><span class=heat-cell style=background:rgb(116,54,30)>20</span></td><td><span class=heat-cell style=background:rgb(118,55,30)>24</span></td></tr><tr><td>信息与通信工程学院</td><td style="font-weight:700">55</td><td><span class=heat-cell style=background:rgb(112,51,30)>8</span></td><td><span class=heat-cell style=background:rgb(116,54,30)>18</span></td><td><span class=heat-cell style=background:rgb(120,56,30)>29</span></td></tr><tr><td>化学与化工学院</td><td style="font-weight:700">40</td><td><span class=heat-cell style=background:rgb(112,52,30)>9</span></td><td><span class=heat-cell style=background:rgb(114,53,30)>14</span></td><td><span class=heat-cell style=background:rgb(115,53,30)>17</span></td></tr><tr><td>经济管理学院</td><td style="font-weight:700">39</td><td><span class=heat-cell style=background:rgb(113,52,30)>10</span></td><td><span class=heat-cell style=background:rgb(113,52,30)>12</span></td><td><span class=heat-cell style=background:rgb(115,53,30)>17</span></td></tr><tr><td>数学与统计学院</td><td style="font-weight:700">39</td><td><span class=heat-cell style=background:rgb(112,51,30)>7</span></td><td><span class=heat-cell style=background:rgb(111,51,30)>6</span></td><td><span class=heat-cell style=background:rgb(119,55,30)>26</span></td></tr><tr><td>新闻与传播学院</td><td style="font-weight:700">37</td><td><span class=heat-cell style=background:rgb(112,52,30)>9</span></td><td><span class=heat-cell style=background:rgb(115,53,30)>15</span></td><td><span class=heat-cell style=background:rgb(114,52,30)>13</span></td></tr><tr><td>材料科学与工程学院</td><td style="font-weight:700">29</td><td><span class=heat-cell style=background:rgb(112,51,30)>8</span></td><td><span class=heat-cell style=background:rgb(112,51,30)>7</span></td><td><span class=heat-cell style=background:rgb(114,53,30)>14</span></td></tr><tr><td>外国语学院</td><td style="font-weight:700">27</td><td><span class=heat-cell style=background:rgb(111,51,30)>6</span></td><td><span class=heat-cell style=background:rgb(113,52,30)>11</span></td><td><span class=heat-cell style=background:rgb(113,52,30)>10</span></td></tr><tr><td>艺术设计学院</td><td style="font-weight:700">26</td><td><span class=heat-cell style=background:rgb(112,52,30)>9</span></td><td><span class=heat-cell style=background:rgb(112,51,30)>8</span></td><td><span class=heat-cell style=background:rgb(112,52,30)>9</span></td></tr><tr><td>物理学院</td><td style="font-weight:700">18</td><td><span class=heat-cell style=background:rgb(110,50,30)>3</span></td><td><span class=heat-cell style=background:rgb(111,51,30)>5</span></td><td><span class=heat-cell style=background:rgb(113,52,30)>10</span></td></tr><tr><td>生命科学学院</td><td style="font-weight:700">17</td><td><span class=heat-cell style=background:rgb(110,50,30)>2</span></td><td><span class=heat-cell style=background:rgb(112,52,30)>9</span></td><td><span class=heat-cell style=background:rgb(111,51,30)>6</span></td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section class="section">
+  <h2>财务汇总</h2>
+  <table>
+    <tbody>
+      <tr><td>已收报名费（194 笔 × ¥30）</td><td style="text-align:right;font-weight:700;color:#059669">¥5820.00</td></tr>
+      <tr><td>已退款（68 笔 × ¥30）</td><td style="text-align:right;font-weight:700;color:#dc2626">¥2040.00</td></tr>
+      <tr style="border-top:2px solid #e5e7eb"><td>净收入</td><td style="text-align:right;font-weight:800;color:#1f4f8b;font-size:15px">¥3780.00</td></tr>
+    </tbody>
+  </table>
+</section>
+
+</div>
+
+<script>
+Chart.defaults.font.family = '"PingFang SC", "Microsoft YaHei", sans-serif';
+Chart.defaults.color = '#4b5563';
+
+// 项目分布饼图
+new Chart(document.getElementById('eventPie'), {
+  type: 'doughnut',
+  data: { labels: ["半程马拉松", "迷你跑", "欢乐跑"], datasets: [{ data: [93, 144, 202], backgroundColor: ['#ff5a1f','#1f4f8b','#10b981'], borderWidth: 2, borderColor: '#fff' }] },
+  options: { responsive: true, plugins: { title: { display: true, text: '报名项目占比' }, legend: { position: 'bottom' } } }
+});
+
+// 项目容量使用率柱状图
+new Chart(document.getElementById('eventBar'), {
+  type: 'bar',
+  data: {
+    labels: ["半程马拉松", "迷你跑", "欢乐跑"],
+    datasets: [
+      { label: '已报名', data: [93, 144, 202], backgroundColor: '#ff5a1f', borderRadius: 6 },
+      { label: '容量上限', data: [120, 200, 300], backgroundColor: '#e5e7eb', borderRadius: 6 }
+    ]
+  },
+  options: { responsive: true, plugins: { title: { display: true, text: '容量使用率' } }, scales: { y: { beginAtZero: true }, x: { stacked: true }, y: { stacked: true } } }
+});
+
+// 报名状态环形图
+new Chart(document.getElementById('statusDoughnut'), {
+  type: 'doughnut',
+  data: { labels: ["PENDING 待审核", "CONFIRMED 报名成功", "REJECTED 已驳回", "CANCELLED 已取消"], datasets: [{ data: [65, 288, 48, 38], backgroundColor: ['#f59e0b','#10b981','#dc2626','#6b7280'], borderWidth: 2, borderColor: '#fff' }] },
+  options: { responsive: true, plugins: { title: { display: true, text: '报名状态分布' }, legend: { position: 'bottom' } } }
+});
+
+// 支付漏斗
+new Chart(document.getElementById('payFunnel'), {
+  type: 'bar',
+  data: { labels: ["UNPAID 未缴费", "PAID 已缴费", "REFUNDED 已退款"], datasets: [{ data: [177, 194, 68], backgroundColor: ['#f59e0b','#10b981','#dc2626'], borderRadius: 6 }] },
+  options: { responsive: true, indexAxis: 'y', plugins: { title: { display: true, text: '支付状态' } } }
+});
+
+// 每日报名趋势
+new Chart(document.getElementById('dailyLine'), {
+  type: 'line',
+  data: { labels: ["2025-08-25", "2025-08-26", "2025-08-27", "2025-08-28", "2025-08-29", "2025-08-30", "2025-08-31", "2025-09-01", "2025-09-02", "2025-09-03", "2025-09-04", "2025-09-05", "2025-09-06", "2025-09-07", "2025-09-08"], datasets: [{ label: '新增报名', data: [8, 16, 14, 15, 19, 28, 36, 44, 49, 40, 63, 39, 24, 31, 13], borderColor: '#ff5a1f', backgroundColor: 'rgba(255,90,31,.15)', tension: 0.3, fill: true, pointRadius: 4 }] },
+  options: { responsive: true, plugins: { title: { display: true, text: '每日新增报名' } }, scales: { y: { beginAtZero: true, title: { display: true, text: '人数' } } } }
+});
+
+// 学院 TOP8
+new Chart(document.getElementById('collegeBar'), {
+  type: 'bar',
+  data: { labels: ["计算机科学与技术学院", "机械工程学院", "信息与通信工程学院", "化学与化工学院", "经济管理学院", "数学与统计学院", "新闻与传播学院", "材料科学与工程学院"], datasets: [{ label: '报名人数', data: [57, 55, 55, 40, 39, 39, 37, 29], backgroundColor: '#1f4f8b', borderRadius: 6 }] },
+  options: { responsive: true, indexAxis: 'y', plugins: { title: { display: true, text: '学院报名 TOP8' } }, scales: { x: { beginAtZero: true } } }
+});
+</script>
+</body>
+</html>

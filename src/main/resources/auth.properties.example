@@ -1,0 +1,3 @@
+# 管理员登录账号：复制本文件为 auth.properties 后按需修改
+admin.username=admin
+admin.password=请改成强密码
